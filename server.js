@@ -12,7 +12,7 @@ var binPath = phantomjs.path
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     config = require('./config/config'),
-    auth = require('./config/middlewares/authorization'),
+    auth = require('./config/middleware/authorization'),
     mongoose = require('mongoose');
 
 // views as directory for all template files
