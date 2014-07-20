@@ -1,2 +1,18 @@
 body {
-  background-color: orange; }
+  background-color: #333;
+  font-family: "Open Sans";
+  color: #ddd;
+  padding: 5px 20px; }
+
+h1 {
+  margin-bottom: 20px; }
+
+td {
+  padding: 3px 10px; }
+
+th {
+  padding: 5px 30px;
+  font-weight: bold; }
+
+table {
+  border: 1px solid #666; }
