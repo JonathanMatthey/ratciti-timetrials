@@ -8,7 +8,7 @@ var TripSchema = new Schema({
     end_station:     { type: String},
     start_time:      { type: String},
     end_time:        { type: String},
-    duration:        { type: String}
+    duration:        { type: String},
     created_at:      { type: Date, default: Date.now }
 });
 

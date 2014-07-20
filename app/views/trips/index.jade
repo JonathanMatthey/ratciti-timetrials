@@ -1,0 +1,39 @@
+extends ../layouts/default
+
+block content
+  style.
+    body{
+      margin:0px;
+      padding:5px 20px;
+      font-family:helvetica;
+      color:#666;
+    }
+    h1{
+    }
+    td{
+      background-color:#eee;
+      padding:3px 10px;
+    }
+    th{
+      border-bottom:3px solid #aaa;
+      padding:5px 30px;
+    }
+  h1.
+    Trips
+  table
+    tr
+      th Trip Id
+      th Start Time
+      th End Time
+      th Start Location
+      th End Location
+      th Duration
+    each trip in trips
+      tr
+        td= trip.trip_id
+        td= trip.start_time
+        td= trip.end_time
+        td= trip.start_station
+        td= trip.start_station
+        td= trip.duration
+
