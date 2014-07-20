@@ -20,14 +20,31 @@ exports.index = function(req, res) {
 };
 
 exports.create = function(req, res) {
-  var new_trip = new Trip({ trip_id: "123123", start_time: "now!" });
+  var new_trip = new Trip({ trip_id: req.trip_id, start_time: req.start_time, start_station: req.start_station });
   console.log('created a trip ?');
   new_trip.save(function(err, trip) {
     // if (err) { return res.jsonp(422, 'validation error'); }
-
     console.log('new trip: ', trip);
     console.dir(trip);
-    res.render('trips/index', { title: 'trips'});
+    // res.render('trips/index', { title: 'trips'});
+  });
+};
+
+
+exports.createTrip = function(tripObj) {
+  var new_trip = new Trip({
+    trip_id: tripObj.trip_id,
+    start_time: tripObj.start_time,
+    end_time: tripObj.end_time,
+    start_station: tripObj.start_station,
+    end_station: tripObj.end_station,
+    duration: tripObj.duration
+  });
+  new_trip.save(function(err, trip) {
+    // if (err) { return res.jsonp(422, 'validation error'); }
+    console.log('> CREATED NEW TRIP');
+    console.dir(trip);
+    return true;
   });
 };
 
