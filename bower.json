@@ -1,3 +1,11 @@
 {
-  "name": "ratciti-timetrials"
+  "name": "ratciti-timetrials",
+  "dependencies": {
+    "datatables": "~1.10.1",
+    "moment": "~2.7.0",
+    "animate.css": "~3.2.0",
+    "messenger": "~1.4.1",
+    "bootstrap": "~3.2.0",
+    "jquery": "~2.1.1"
+  }
 }
