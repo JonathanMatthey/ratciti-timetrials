@@ -20,22 +20,33 @@ head
   //- meta(property='og:site_name', content='Fuiszmedia')
   //- meta(property='fb:admins', content='APP_ADMIN')
 
-  //- Bootstrap core CSS
-  link(rel='stylesheet', href='/lib/bootstrap/css/bootstrap.css')
+  //- jquery:
+  script(type='text/javascript', src='bower_components/jquery/dist/jquery.js')
+  //- 'animate.css':
+  link(src='stylesheet',href='bower_components/animate.css/animate.css')
+  //- bootstrap:
+  link(src='stylesheet',href='bower_components/bootstrap/dist/css/bootstrap.css')
+  script(type='text/javascript', src='bower_components/bootstrap/dist/js/bootstrap.js')
+  //- messenger:
+  script(type='text/javascript', src='bower_components/messenger/build/js/messenger.js')
+  script(type='text/javascript', src='bower_components/messenger/build/js/messenger-theme-flat.js')
+  script(type='text/javascript', src='bower_components/moment/moment.js')
+  link(src='stylesheet',href='bower_components/messenger/build/css/messenger.css')
+  link(src='stylesheet',href='bower_components/messenger/build/css/messenger-theme-future.css')
+  link(src='stylesheet',href='bower_components/messenger/build/css/messenger-theme-flat.css')
+  link(src='stylesheet',href='bower_components/messenger/build/css/messenger-theme-block.css')
+  link(src='stylesheet',href='bower_components/messenger/build/css/messenger-theme-air.css')
+  link(src='stylesheet',href='bower_components/messenger/build/css/messenger-theme-ice.css')
+
   //- Fonts from Font Awsome
   link(rel='stylesheet', href='/lib/font-awesome.min.css')
-  //- CSS Animate
-  link(rel='stylesheet', href='/lib/css/animate.css')
   //- Fonts
   link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic', rel='stylesheet', type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,700', rel='stylesheet', type='text/css')
   //- Feature detection
-  script(src='/lib/js/modernizr-2.6.2.min.js')
+  script(src='bower_components/modernizr/modernizr.js')
   //- link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap-responsive.css')
   link(rel='stylesheet', href='/css/main.css')
-  script(type='text/javascript', src='/lib/jquery/jquery.min.js')
-  script(type='text/javascript', src='/lib/bootstrap/js/bootstrap.min.js')
-  script(type='text/javascript', src='/lib/moment/moment.min.js')
 
   //- HTML5 shim and res`.js IE8 support of HTML5 elements and media queries
   //[if lt IE 9]

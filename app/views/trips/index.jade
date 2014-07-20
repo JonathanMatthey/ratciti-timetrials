@@ -1,22 +1,82 @@
 extends ../layouts/default
 
+block head
+  //- datatables:
+  script(type='text/javascript', src='bower_components/datatables/media/js/jquery.dataTables.js')
+  link(src='stylesheet',href='bower_components/datatables/media/css/jquery.dataTables.css')
+  link(src='stylesheet',href='//cdn.datatables.net/plug-ins/be7019ee387/integration/bootstrap/3/dataTables.bootstrap.css')
+
+  script(type='text/javascript', src='js/trips-index.js')
+
 block content
-  h1.
-    Trips
-  table
-    tr
-      th Trip Id
-      th Start Time
-      th End Time
-      th Start Location
-      th End Location
-      th Duration
-    each trip in trips
-      tr
-        td= trip.trip_id
-        td= trip.start_time
-        td= trip.end_time
-        td= trip.start_station
-        td= trip.start_station
-        td= trip.duration
+  h1 Race Against The citi
+  h2 Trips
+
+  #example_wrapper.dataTables_wrapper.form-inline
+    .row
+      //- .col-xs-6
+      //-   #example_length.dataTables_length
+      //-     label
+      //-       select.form-control.input-sm(name='example_length', aria-controls='example')
+      //-         option(value='10') 10
+      //-         option(value='25') 25
+      //-         option(value='50') 50
+      //-         option(value='100') 100
+      //-       | records per page
+      //- .col-xs-6
+      //-   #example_filter.dataTables_filter
+      //-     label
+      //-       | Search:
+      //-       input.form-control.input-sm(type='search', placeholder='', aria-controls='example')
+    table#example.table.table-striped.table-bordered.dataTable(cellspacing='0', width='100%', role='grid', aria-describedby='example_info', style='width: 100%;')
+      thead
+        tr(role='row')
+          th.sorting_asc(tabindex='0', aria-controls='example', rowspan='1', colspan='1', aria-sort='ascending' ) Trip Id
+          th.sorting(tabindex='0', aria-controls='example', rowspan='1', colspan='1' ) Start Time
+          th.sorting(tabindex='0', aria-controls='example', rowspan='1', colspan='1' ) End Time
+          th.sorting(tabindex='0', aria-controls='example', rowspan='1', colspan='1' ) Start Location
+          th.sorting(tabindex='0', aria-controls='example', rowspan='1', colspan='1' ) End Location
+          th.sorting(tabindex='0', aria-controls='example', rowspan='1', colspan='1' ) Duration
+      tfoot
+        tr
+          th Trip Id
+          th Start Time
+          th End Time
+          th Start Location
+          th End Location
+          th Duration
+      tbody
+        each trip in trips
+          - var duration = moment(trip.duration,"mm ss")
+          if(duration.isValid())
+            tr(role='row')
+              td= trip.trip_id
+              td= trip.start_time
+              td= trip.end_time
+              td= trip.start_station
+              td= trip.end_station
+              td= duration.format("mm:ss")
+
+    //- .row
+    //-   .col-xs-6
+    //-     #example_info.dataTables_info(role='status', aria-live='polite') Showing 1 to 10 of 57 entries
+    //-   .col-xs-6
+    //-     #example_paginate.dataTables_paginate.paging_simple_numbers
+    //-       ul.pagination
+    //-         li#example_previous.paginate_button.previous.disabled(aria-controls='example', tabindex='0')
+    //-           a(href='#') Previous
+    //-         li.paginate_button.active(aria-controls='example', tabindex='0')
+    //-           a(href='#') 1
+    //-         li.paginate_button(aria-controls='example', tabindex='0')
+    //-           a(href='#') 2
+    //-         li.paginate_button(aria-controls='example', tabindex='0')
+    //-           a(href='#') 3
+    //-         li.paginate_button(aria-controls='example', tabindex='0')
+    //-           a(href='#') 4
+    //-         li.paginate_button(aria-controls='example', tabindex='0')
+    //-           a(href='#') 5
+    //-         li.paginate_button(aria-controls='example', tabindex='0')
+    //-           a(href='#') 6
+    //-         li#example_next.paginate_button.next(aria-controls='example', tabindex='0')
+    //-           a(href='#') Next
 
