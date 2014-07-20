@@ -1,3 +1,9 @@
+var path = require('path');
+// phantomjs requirements
+var childProcess = require('child_process')
+var phantomjs = require('phantomjs')
+var binPath = phantomjs.path;
+
 module.exports = function(app, passport, auth) {
 
     // Trips Routes
@@ -18,4 +24,36 @@ module.exports = function(app, passport, auth) {
     app.get('/', function(req, res) {
       res.render('index');
     });
+
+    app.get('/scrape', function(req, res) {
+      console.log('running ph_scrape_trips script');
+      var childArgs = [
+        path.join(__dirname, '../ph_scrape_trips.js'),
+        ''
+      ];
+
+      console.log(path.join(__dirname, '../ph_scrape_trips.js'));
+
+      childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+        // handle results
+        var tripsArr = stdout.split("~~~");
+        for(var j = 0; j < tripsArr.length; j++){
+          var tripVals = tripsArr[j].split("|||");
+          trips.createTrip({
+              "trip_id":tripVals[0],
+              "start_station":tripVals[1],
+              "end_station":tripVals[3],
+              "start_time":tripVals[2],
+              "end_time":tripVals[4],
+              "duration":tripVals[5]
+          })
+        }
+        console.log('------------------------');
+        console.log('stdout: ');
+        console.log('------------------------');
+        console.log(stdout);
+        console.log('------------------------');
+      });
+    });
+
 };
