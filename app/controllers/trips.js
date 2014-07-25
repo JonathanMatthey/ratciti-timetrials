@@ -42,8 +42,6 @@ exports.createTrip = function(tripObj) {
   });
   new_trip.save(function(err, trip) {
     // if (err) { return res.jsonp(422, 'validation error'); }
-    console.log('> CREATED NEW TRIP');
-    console.dir(trip);
     return true;
   });
 };

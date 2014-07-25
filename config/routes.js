@@ -26,17 +26,18 @@ module.exports = function(app, passport, auth) {
     });
 
     app.get('/scrape', function(req, res) {
-      console.log('running ph_scrape_trips script');
+      console.log('Scraping citibike.com');
       var childArgs = [
         path.join(__dirname, '../ph_scrape_trips.js'),
         ''
       ];
 
-      console.log(path.join(__dirname, '../ph_scrape_trips.js'));
 
       childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+        console.log('STARTED');
         // handle results
         var tripsArr = stdout.split("~~~");
+        process.stdout.write("Adding " + tripsArr.length + "Trips to DB ");
         for(var j = 0; j < tripsArr.length; j++){
           var tripVals = tripsArr[j].split("|||");
           trips.createTrip({
@@ -47,12 +48,9 @@ module.exports = function(app, passport, auth) {
               "end_time":tripVals[4],
               "duration":tripVals[5]
           })
+          process.stdout.write(".");
         }
-        console.log('------------------------');
-        console.log('stdout: ');
-        console.log('------------------------');
-        console.log(stdout);
-        console.log('------------------------');
+        console.log('DONE -- Adding trips')
       });
     });
 

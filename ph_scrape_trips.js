@@ -83,7 +83,7 @@ function printTrip() {
       }
       trip = trip.slice(0, - 3);
       trip += "~~~";
-      console.log(trip);
+      console.log(trip.replace(/&amp;/g,'&'));
     }
   });
 }
